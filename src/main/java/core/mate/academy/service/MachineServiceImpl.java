@@ -1,9 +1,9 @@
 package core.mate.academy.service;
 
 import core.mate.academy.model.Bulldozer;
+import core.mate.academy.model.Excavator;
 import core.mate.academy.model.Machine;
 import core.mate.academy.model.Truck;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +22,12 @@ public class MachineServiceImpl<T extends Machine> implements MachineService<T> 
         if (type == Bulldozer.class) {
             BulldozerProducer producer = new BulldozerProducer();
             List<Bulldozer> list = producer.get();
+            return (List<T>) new ArrayList<>(list);
+        }
+
+        if (type == Excavator.class) {
+            ExcavatorProducer producer = new ExcavatorProducer();
+            List<Excavator> list = producer.get();
             return (List<T>) new ArrayList<>(list);
         }
 
